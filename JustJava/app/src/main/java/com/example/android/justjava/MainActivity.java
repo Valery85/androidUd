@@ -12,7 +12,7 @@ import java.text.NumberFormat;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
-    private int quatintityCups = 1;
+    private int quatintityCups = 2;
     private int priceOfCup =  5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,4 +42,13 @@ public class MainActivity extends AppCompatActivity {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
+    public void increment(View view){
+         quatintityCups++;
+         display(quatintityCups);
+    }
+    public void decrement(View view){
+         quatintityCups--;
+        display(quatintityCups);
+    }
+
 }
