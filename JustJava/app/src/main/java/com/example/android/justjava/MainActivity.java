@@ -13,7 +13,8 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
     private int quatintityCups = 2;
-    private int priceOfCup =  5;
+    private int priceOfCup = 5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +25,11 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        display(quatintityCups);
-        displayPrice(quatintityCups*priceOfCup);
+        String messageToCustumer = "Total:  $" + quatintityCups*priceOfCup +
+                "\n" + "Thank you!";
+        //       display(quatintityCups);
+        //      displayPrice(quatintityCups*priceOfCup);
+        displayMessage(messageToCustumer);
     }
 
     /**
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
+
     /**
      * This method displays the given price on the screen.
      */
@@ -42,12 +47,23 @@ public class MainActivity extends AppCompatActivity {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
-    public void increment(View view){
-         quatintityCups++;
-         display(quatintityCups);
+
+    /**
+     * This method displays the given price with message to customer on the screen.
+     */
+
+    private void displayMessage(String message) {
+        TextView priceMessageView = (TextView) findViewById(R.id.price_text_view);
+        priceMessageView.setText(message);
     }
-    public void decrement(View view){
-         quatintityCups--;
+
+    public void increment(View view) {
+        quatintityCups++;
+        display(quatintityCups);
+    }
+
+    public void decrement(View view) {
+        quatintityCups--;
         display(quatintityCups);
     }
 
