@@ -40,5 +40,5 @@
         android:layout_margin="8dp"
         android:text="Free Throw"
         android:textAllCaps="true"
-        android:onClick="addOneToA"/>
+        android:onClick="addOneToTeamA"/>
 </LinearLayout>

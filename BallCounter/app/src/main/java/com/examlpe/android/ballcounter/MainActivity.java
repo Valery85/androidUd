@@ -6,21 +6,28 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    int scoreTeamA =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+    //Add three points when tapped to team A
 
     public void addThreeToA(View view){
-        displayScoreTeamA(3);
+        scoreTeamA+=3;
+        displayScoreTeamA(scoreTeamA);
     }
+
     public void addTwoToA(View view){
-        displayScoreTeamA(2);
+        scoreTeamA+=2;
+        displayScoreTeamA(scoreTeamA);
     }
-    public void addOneToA(View view){
-        displayScoreTeamA(1);
+
+    public void addOneToTeamA(View view){
+        scoreTeamA+=1;
+        displayScoreTeamA(scoreTeamA);
     }
 
     private void displayScoreTeamA(int number){
