@@ -74,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:onClick="addThreeToA"
+            android:onClick="addThreeToB"
             android:text="+3 points"
             android:textAllCaps="true" />
 
@@ -82,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:onClick="addTwoToA"
+            android:onClick="addTwoToB"
             android:text="+2 points"
             android:textAllCaps="true" />
 
@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:onClick="addOneToTeamA"
+            android:onClick="addOneToTeamB"
             android:text="Free Throw"
             android:textAllCaps="true" />
     </LinearLayout>
