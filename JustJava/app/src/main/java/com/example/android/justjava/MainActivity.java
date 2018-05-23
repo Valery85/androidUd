@@ -45,9 +45,13 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        String messageToCustumer = "Total:  $" + quatintityCups*priceOfCup + "\n" +
-                "Add whipped cream? " + isWhippedCream + "\n" +
-                "Thank you!";
+        String messageToCustumer = "Total:  $" + quatintityCups*priceOfCup + "\n";
+        messageToCustumer+= "Add whipped cream? " + isWhippedCream + "\n";
+        messageToCustumer+= "Quantity: " + quatintityCups + "\n";
+        messageToCustumer+= "Thank you!";
+
+//                "Add whipped cream? " + isWhippedCream + "\n" +
+//                "Thank you!";
         //       display(quatintityCups);
         //      displayPrice(quatintityCups*priceOfCup);
         displayMessage(messageToCustumer);
