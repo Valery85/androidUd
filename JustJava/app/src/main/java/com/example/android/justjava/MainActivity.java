@@ -3,7 +3,9 @@ package com.example.android.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -14,19 +16,38 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
     private int quatintityCups = 2;
     private int priceOfCup = 5;
+    private boolean isWhippedCream = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        final CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_id);
+//        if (checkBox.isChecked()) {
+//            checkBox.setChecked(false);
+//        }
+
+    }
+
+    public void isWhippedCream(View view){
+        CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_id);
+        if (checkBox.isChecked()){
+            isWhippedCream = true;
+            Log.i("MainActivity", "isWhippedCream: " + isWhippedCream + " !");
+        } else {
+            isWhippedCream = false;
+            Log.i("MainActivity", "isWhippedCream: " + isWhippedCream + " !");
+        }
     }
 
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        String messageToCustumer = "Total:  $" + quatintityCups*priceOfCup +
-                "\n" + "Thank you!";
+        String messageToCustumer = "Total:  $" + quatintityCups*priceOfCup + "\n" +
+                "Add whipped cream? " + isWhippedCream + "\n" +
+                "Thank you!";
         //       display(quatintityCups);
         //      displayPrice(quatintityCups*priceOfCup);
         displayMessage(messageToCustumer);
