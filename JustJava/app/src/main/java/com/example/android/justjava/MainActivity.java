@@ -17,21 +17,16 @@ public class MainActivity extends AppCompatActivity {
     private int quatintityCups = 2;
     private int priceOfCup = 5;
     private boolean isWhippedCream = false;
+    private boolean isChocolate = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        final CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_id);
-//        if (checkBox.isChecked()) {
-//            checkBox.setChecked(false);
-//        }
-
     }
 
     public void isWhippedCream(View view){
-        CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_id);
+        CheckBox checkBox = (CheckBox) findViewById(R.id.wipped_cream_id);
         if (checkBox.isChecked()){
             isWhippedCream = true;
             Log.i("MainActivity", "isWhippedCream: " + isWhippedCream + " !");
@@ -40,20 +35,27 @@ public class MainActivity extends AppCompatActivity {
             Log.i("MainActivity", "isWhippedCream: " + isWhippedCream + " !");
         }
     }
+    public void isChocolate(View view){
+        CheckBox checkBox = (CheckBox) findViewById(R.id.chocolate_id);
+        if (checkBox.isChecked()){
+            isChocolate = true;
+            Log.i("MainActivity", "isChocolate: " + isChocolate + " !");
+        } else {
+            isChocolate = false;
+            Log.i("MainActivity", "isChocolate: " + isChocolate + " !");
+        }
+    }
 
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        String messageToCustumer = "Total:  $" + quatintityCups*priceOfCup + "\n";
+        String messageToCustumer = "Name: Rik " + "\n";
         messageToCustumer+= "Add whipped cream? " + isWhippedCream + "\n";
+        messageToCustumer+= "Add whipped cream? " + isChocolate + "\n";
         messageToCustumer+= "Quantity: " + quatintityCups + "\n";
+        messageToCustumer+= "Total:  $" + quatintityCups*priceOfCup + "\n";
         messageToCustumer+= "Thank you!";
-
-//                "Add whipped cream? " + isWhippedCream + "\n" +
-//                "Thank you!";
-        //       display(quatintityCups);
-        //      displayPrice(quatintityCups*priceOfCup);
         displayMessage(messageToCustumer);
     }
 
