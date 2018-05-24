@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -14,6 +15,7 @@ import java.text.NumberFormat;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
+    private String customerName;
     private int quatintityCups = 2;
     private int priceOfCup = 5;
     private boolean isWhippedCream = false;
@@ -50,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        String messageToCustumer = "Name: Rik " + "\n";
+        EditText editText = (EditText) findViewById(R.id.name_input);
+        customerName = editText.getText().toString();
+
+        String messageToCustumer = "Name: " + customerName +  "\n";
         messageToCustumer+= "Add whipped cream? " + isWhippedCream + "\n";
         messageToCustumer+= "Add whipped cream? " + isChocolate + "\n";
         messageToCustumer+= "Quantity: " + quatintityCups + "\n";
