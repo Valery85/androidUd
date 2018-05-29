@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private String customerName;
     private int quatintityCups = 2;
     private int priceOfCup = 5;
+    private int priceOfWhippedCream = 1;
+    private int priceChocolate = 2;
     private boolean isWhippedCream = false;
     private boolean isChocolate = false;
 
@@ -59,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
         messageToCustumer+= "Add whipped cream? " + isWhippedCream + "\n";
         messageToCustumer+= "Add whipped cream? " + isChocolate + "\n";
         messageToCustumer+= "Quantity: " + quatintityCups + "\n";
-        messageToCustumer+= "Total:  $" + quatintityCups*priceOfCup + "\n";
+ //       messageToCustumer+= "Total:  $" + quatintityCups*priceOfCup + "\n";
+        messageToCustumer+= "Total:  $" + calculatePrice(quatintityCups, isWhippedCream, isChocolate) + "\n";
         messageToCustumer+= "Thank you!";
         displayMessage(messageToCustumer);
     }
@@ -98,5 +101,13 @@ public class MainActivity extends AppCompatActivity {
         quatintityCups--;
         display(quatintityCups);
     }
-
+    public int calculatePrice(int numberOfCups, boolean wippedCream, boolean chocolate){
+        int basePrice = priceOfCup;
+        if (wippedCream){
+            basePrice  += priceOfWhippedCream;
+        }
+        if (chocolate)
+            basePrice += priceChocolate;
+        return basePrice * numberOfCups;
+    }
 }
