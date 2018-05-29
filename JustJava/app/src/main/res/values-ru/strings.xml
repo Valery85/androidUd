@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Кофе</string>
+    <string name="hint_name">Имя</string>
+    <string name="toppings">Начинки</string>
+    <string name="whipped_cream">Взбитые сливки</string>
+    <string name="сhocolate">Шоколад</string>
+    <string name="quantity">количество</string>
+    <string name="order_summary">Итог заказа</string>
+    <string name="order">Заказ</string>
+    <string name="custumerName">Имя: <xliff:g id="name" example="Rik">%s</xliff:g></string>
+    <string name="add_wipped_cream">Добавить взбитых сливок? <xliff:g id="question1" example="true" >%b</xliff:g> </string>
+    <string name="add_chocolate">Добавить шоколад? <xliff:g id="question2" example="true" >%b</xliff:g> </string>
+    <string name="quantity_in_order">"Количество: "</string>
+    <string name="total_in_order">Итого: $</string>
+    <string name="thank_in_order">"Спасибо! "</string>
+</resources>

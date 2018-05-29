@@ -59,13 +59,17 @@ public class MainActivity extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.name_input);
         customerName = editText.getText().toString();
 
-        String messageToCustumer = "Name: " + customerName +  "\n";
-        messageToCustumer+= "Add whipped cream? " + isWhippedCream + "\n";
-        messageToCustumer+= "Add whipped cream? " + isChocolate + "\n";
-        messageToCustumer+= "Quantity: " + quatintityCups + "\n";
+        String messageToCustumer =
+//                "Name: " + customerName +  "\n";
+                getString(R.string.custumerName, customerName) + "\n";
+//        messageToCustumer+= "Add whipped cream? " + isWhippedCream + "\n";
+
+        messageToCustumer = getString(R.string.add_wipped_cream, isWhippedCream) + "\n";
+        messageToCustumer+= getString(R.string.add_chocolate, isChocolate) + "\n";
+        messageToCustumer+= getString(R.string.quantity_in_order) + quatintityCups + "\n";
  //       messageToCustumer+= "Total:  $" + quatintityCups*priceOfCup + "\n";
-        messageToCustumer+= "Total:  $" + calculatePrice(quatintityCups, isWhippedCream, isChocolate) + "\n";
-        messageToCustumer+= "Thank you!";
+        messageToCustumer+= getString(R.string.quantity_in_order) + calculatePrice(quatintityCups, isWhippedCream, isChocolate) + "\n";
+        messageToCustumer+= getString(R.string.thank_in_order);
         displayMessage(messageToCustumer);
 
         Intent sendIntent = new Intent();
