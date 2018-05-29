@@ -1,6 +1,7 @@
 package com.example.android.justjava;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -66,6 +67,17 @@ public class MainActivity extends AppCompatActivity {
         messageToCustumer+= "Total:  $" + calculatePrice(quatintityCups, isWhippedCream, isChocolate) + "\n";
         messageToCustumer+= "Thank you!";
         displayMessage(messageToCustumer);
+
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, messageToCustumer);
+        sendIntent.setType("text/plain");
+
+
+        if (sendIntent.resolveActivity(getPackageManager()) != null){
+            startActivity(sendIntent);
+        }
+
     }
 
     /**
@@ -109,9 +121,14 @@ public class MainActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(), "You can't order less than 1 cup of coffe!",
                     Toast.LENGTH_SHORT);
             toast.show();
-        } else {
-            quatintityCups--;
+            // exit decrement method to not decrement quantityCups
+            return;
         }
+//        else {
+//            quatintityCups--;
+//        }
+        // if run next commands quantityCups more than 1
+        quatintityCups--;
         display(quatintityCups);
     }
     public int calculatePrice(int numberOfCups, boolean wippedCream, boolean chocolate){
