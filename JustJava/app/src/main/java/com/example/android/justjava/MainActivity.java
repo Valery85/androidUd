@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -93,12 +94,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void increment(View view) {
-        quatintityCups++;
+        if (quatintityCups >= 100){
+            Toast toast = Toast.makeText(getApplicationContext(), "You can't order more than 100 cups of coffe!",
+                    Toast.LENGTH_SHORT);
+            toast.show();
+        }else {
+            quatintityCups++;
+        }
         display(quatintityCups);
     }
 
     public void decrement(View view) {
-        quatintityCups--;
+        if (quatintityCups <=1){
+            Toast toast = Toast.makeText(getApplicationContext(), "You can't order less than 1 cup of coffe!",
+                    Toast.LENGTH_SHORT);
+            toast.show();
+        } else {
+            quatintityCups--;
+        }
         display(quatintityCups);
     }
     public int calculatePrice(int numberOfCups, boolean wippedCream, boolean chocolate){
