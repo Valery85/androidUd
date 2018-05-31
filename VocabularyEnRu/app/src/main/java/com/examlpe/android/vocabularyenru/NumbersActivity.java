@@ -65,13 +65,19 @@ public class NumbersActivity extends AppCompatActivity {
 
     LinearLayout rootView = (LinearLayout) findViewById(R.id.root_view);
 
-    int sizeWords = words.size();
-    int count = 0;
-    while (count < sizeWords){
-        TextView wordView = new TextView(this);
-        wordView.setText(words.get(count));
-        rootView.addView(wordView);
-        count++;
-    }
+//    int sizeWords = words.size();
+//    int count = 0;
+//    while (count < sizeWords){
+//        TextView wordView = new TextView(this);
+//        wordView.setText(words.get(count));
+//        rootView.addView(wordView);
+//        count++;
+//    }
+        for (int count=0; count<words.size(); count++){
+            TextView wordView = new TextView(NumbersActivity.this);
+            wordView.setText(words.get(count));
+            rootView.addView(wordView);
+        }
+
     }
 }
