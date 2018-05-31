@@ -19,6 +19,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 public class NumbersActivity extends AppCompatActivity {
 
 
@@ -28,7 +30,7 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
 
-        // Create array of words (numbers)
+/*        // Create array of words (numbers)
         String [] words = new String [10];
         words[0] = "one";
         words[1] = "two";
@@ -44,8 +46,22 @@ public class NumbersActivity extends AppCompatActivity {
         for (int i=0; i<10; i++)
         {
             Log.v("NumberActivty", "Word at index " + i + ": " + words[i] );
+        }*/
+
+        ArrayList <String> words = new ArrayList<String>();
+        words.add("one");
+        words.add("two");
+        words.add("three");
+        words.add("four");
+        words.add("five");
+        words.add("six");
+        words.add("seven");
+        words.add("eight");
+        words.add("nine");
+        words.add("ten");
+
+        for (int i=0; i<10; i++){
+            Log.v("NumberActivity", "Word at index " + i + ": " + words.get(i) );
         }
-
-
     }
 }
