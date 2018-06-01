@@ -81,7 +81,7 @@ public class NumbersActivity extends AppCompatActivity {
 //            rootView.addView(wordView);
 //        }
 
-        WordAdapter itemsAdapter = new WordAdapter(NumbersActivity.this,
+        RAdapter itemsAdapter = new RAdapter(NumbersActivity.this,
              //   R.layout.list_item);
                 words);
 

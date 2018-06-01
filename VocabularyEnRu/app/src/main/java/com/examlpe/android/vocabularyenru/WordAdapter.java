@@ -1,3 +1,4 @@
+/*
 package com.examlpe.android.vocabularyenru;
 
 import android.app.Activity;
@@ -11,9 +12,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+*/
 /**
  * Created by rik on 5/31/2018.
- */
+ *//*
+
 
 public class WordAdapter extends ArrayAdapter<Word>{
 
@@ -51,3 +54,4 @@ public class WordAdapter extends ArrayAdapter<Word>{
     return listItemView;
     }
 }
+*/
