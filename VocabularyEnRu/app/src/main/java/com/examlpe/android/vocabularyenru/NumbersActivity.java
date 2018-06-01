@@ -52,17 +52,17 @@ public class NumbersActivity extends AppCompatActivity {
             Log.v("NumberActivty", "Word at index " + i + ": " + words[i] );
         }*/
 
-        ArrayList <String> words = new ArrayList<String>();
-        words.add("one");
-        words.add("two");
-        words.add("three");
-        words.add("four");
-        words.add("five");
-        words.add("six");
-        words.add("seven");
-        words.add("eight");
-        words.add("nine");
-        words.add("ten");
+        ArrayList <Word> words = new ArrayList<Word>();
+        words.add(new Word("один", "one"));
+        words.add(new Word("два", "two"));
+        words.add(new Word("три", "three"));
+        words.add(new Word("четыре", "four"));
+        words.add(new Word("пять", "five"));
+        words.add(new Word("шесть", "six"));
+        words.add(new Word("семь", "seven"));
+        words.add(new Word("восем", "eight"));
+        words.add(new Word("девять", "nine"));
+        words.add(new Word("десять", "ten"));
 
 
 //    LinearLayout rootView = (LinearLayout) findViewById(R.id.root_view);
@@ -81,8 +81,9 @@ public class NumbersActivity extends AppCompatActivity {
 //            rootView.addView(wordView);
 //        }
 
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(NumbersActivity.this,
-                android.R.layout.simple_list_item_1, words);
+        WordAdapter itemsAdapter = new WordAdapter(NumbersActivity.this,
+             //   R.layout.list_item);
+                words);
 
         ListView listView = (ListView) findViewById(R.id.list);
 
