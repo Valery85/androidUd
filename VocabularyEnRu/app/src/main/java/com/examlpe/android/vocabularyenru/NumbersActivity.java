@@ -18,7 +18,9 @@ package com.examlpe.android.vocabularyenru;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -63,7 +65,7 @@ public class NumbersActivity extends AppCompatActivity {
         words.add("ten");
 
 
-    LinearLayout rootView = (LinearLayout) findViewById(R.id.root_view);
+//    LinearLayout rootView = (LinearLayout) findViewById(R.id.root_view);
 
 //    int sizeWords = words.size();
 //    int count = 0;
@@ -73,11 +75,19 @@ public class NumbersActivity extends AppCompatActivity {
 //        rootView.addView(wordView);
 //        count++;
 //    }
-        for (int count=0; count<words.size(); count++){
-            TextView wordView = new TextView(NumbersActivity.this);
-            wordView.setText(words.get(count));
-            rootView.addView(wordView);
-        }
+//        for (int count=0; count<words.size(); count++){
+//            TextView wordView = new TextView(NumbersActivity.this);
+//            wordView.setText(words.get(count));
+//            rootView.addView(wordView);
+//        }
+
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(NumbersActivity.this,
+                android.R.layout.simple_list_item_1, words);
+
+        ListView listView = (ListView) findViewById(R.id.list);
+
+        listView.setAdapter(itemsAdapter);
+
 
     }
 }
