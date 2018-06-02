@@ -17,12 +17,36 @@ package com.examlpe.android.vocabularyenru;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class ColorsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_colors);
+        setContentView(R.layout.activity_numbers);
+
+
+        ArrayList<Word> words = new ArrayList<Word>();
+        words.add(new Word("красный", "red"));
+        words.add(new Word("зеленый", "green"));
+        words.add(new Word("коричневый", "brown"));
+        words.add(new Word("серый", "gray"));
+        words.add(new Word("черный", "black"));
+        words.add(new Word("белый", "white"));
+        words.add(new Word("грязно желтый", "dusty yellow"));
+        words.add(new Word("горчично желтый", "mustard yellow"));
+
+        RAdapter itemsAdapter = new RAdapter(ColorsActivity.this,
+                //   R.layout.list_item);
+                words);
+
+        ListView listView = (ListView) findViewById(R.id.list);
+
+        listView.setAdapter(itemsAdapter);
+
     }
 }
+

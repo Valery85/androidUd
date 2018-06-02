@@ -26,6 +26,10 @@ public class RAdapter extends ArrayAdapter<Word> {
      * data we want to populate into ListView layout.
      *
      * @param context   The current context. Used to inflate the layout file
+     *
+     * resource id argument is 0 because don't need to evoke creation of layout by
+     * super class. It will be created in getView().
+     *
      * @param wordsList List of Word objects to display in the list
      */
 
@@ -39,7 +43,8 @@ public class RAdapter extends ArrayAdapter<Word> {
      * @param position    position in the list of data ( in wordList) that should be displayed in
      *                    the list item view.
      * @param convertView The recycled view to populate
-     * @param parent      The parent view that is used for inflation.
+     * @param parent      The parent view that is used for inflation. List items will be
+     *                    added in this ViewGroup as children. Here will be ListView.
      * @return The View for the position in the AdapterView.
      */
     @NonNull

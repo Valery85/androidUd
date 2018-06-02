@@ -89,6 +89,5 @@ public class NumbersActivity extends AppCompatActivity {
 
         listView.setAdapter(itemsAdapter);
 
-
     }
 }

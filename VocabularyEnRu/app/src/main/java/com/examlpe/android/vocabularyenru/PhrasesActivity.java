@@ -17,12 +17,36 @@ package com.examlpe.android.vocabularyenru;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class PhrasesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phrases);
+        setContentView(R.layout.activity_numbers);
+
+
+        ArrayList<Word> words = new ArrayList<Word>();
+        words.add(new Word("Куда собираешься?", "Where are you going?"));
+        words.add(new Word("Как тебя зовут", "What is you name"));
+        words.add(new Word("Меня зовут ...", "My name is ..."));
+        words.add(new Word("Как ты себя чувствуешь?", "How are you feeling?"));
+        words.add(new Word("Чувствую себя хорошо", "I'm feeling good"));
+        words.add(new Word("Ты идешь?", "Are you coming?"));
+        words.add(new Word("Да, я иду", "Yes, I’m coming."));
+        words.add(new Word("Пошли", "Let’s go."));
+        words.add(new Word("Иди сюда", "Come here"));
+
+
+        RAdapter itemsAdapter = new RAdapter(this,
+                //   R.layout.list_item);
+                words);
+
+        ListView listView = (ListView) findViewById(R.id.list);
+
+        listView.setAdapter(itemsAdapter);
     }
 }
