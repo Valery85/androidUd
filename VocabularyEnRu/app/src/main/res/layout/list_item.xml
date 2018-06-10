@@ -1,47 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="horizontal">
 
     <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <ImageView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:src="@mipmap/ic_launcher" />
+            android:id="@+id/list_item_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             />
 
     </LinearLayout>
 
 
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
-<TextView
-    android:id="@+id/ruWordTV"
-    android:paddingTop="8dp"
-    android:paddingLeft="16dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:text="один"
-    />
-    <TextView
-        android:id="@+id/enWordTV"
-        android:paddingLeft="16dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="one"
-        />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/ruWordTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            tools:text="один" />
+
+        <TextView
+            android:id="@+id/enWordTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            tools:text="one" />
+    </LinearLayout>
 </LinearLayout>
