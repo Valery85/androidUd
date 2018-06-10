@@ -49,16 +49,16 @@ public class NumbersActivity extends AppCompatActivity {
         }*/
 
         ArrayList <Word> words = new ArrayList<Word>();
-        words.add(new Word("один", "one"));
-        words.add(new Word("два", "two"));
-        words.add(new Word("три", "three"));
-        words.add(new Word("четыре", "four"));
-        words.add(new Word("пять", "five"));
-        words.add(new Word("шесть", "six"));
-        words.add(new Word("семь", "seven"));
-        words.add(new Word("восем", "eight"));
-        words.add(new Word("девять", "nine"));
-        words.add(new Word("десять", "ten"));
+        words.add(new Word("один", "one", R.drawable.number_one));
+        words.add(new Word("два", "two", R.drawable.number_two));
+        words.add(new Word("три", "three", R.drawable.number_three));
+        words.add(new Word("четыре", "four", R.drawable.number_four));
+        words.add(new Word("пять", "five", R.drawable.number_five));
+        words.add(new Word("шесть", "six", R.drawable.number_six));
+        words.add(new Word("семь", "seven", R.drawable.number_seven));
+        words.add(new Word("восем", "eight", R.drawable.number_eight));
+        words.add(new Word("девять", "nine", R.drawable.number_nine));
+        words.add(new Word("десять", "ten", R.drawable.number_ten));
 
 
 //    LinearLayout rootView = (LinearLayout) findViewById(R.id.root_view);
