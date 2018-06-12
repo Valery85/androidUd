@@ -73,7 +73,15 @@ public class RAdapter extends ArrayAdapter<Word> {
         enWordTV.setText(currentWord.getmEnWord());
 
         ImageView wordImageView = (ImageView) listItemView.findViewById(R.id.list_item_icon);
-        wordImageView.setImageResource(currentWord.getmImageResourceId());
+
+        if (currentWord.hasImage()){
+            wordImageView.setImageResource(currentWord.getmImageResourceId());
+            wordImageView.setVisibility(View.VISIBLE);
+        }
+        else {
+            /* GONE because ImageView doesn't have to take space on the screen*/
+            wordImageView.setVisibility(View.GONE);
+        }
 
         return listItemView;
     }

@@ -12,8 +12,9 @@ public class Word {
     /*English translation*/
     private String mEnWord;
     /** For store image id*/
-    private int mImageResourceId;
-
+    private int mImageResourceId = NO_IMAGE_PROVIDED;
+    /** Constant that shows that no image was provided for this word*/
+    private static final int NO_IMAGE_PROVIDED = -1;
 
     public Word(String mRuWord, String mEnWord) {
         this.mRuWord = mRuWord;
@@ -39,4 +40,7 @@ public class Word {
     }
 
     public int getmImageResourceId() { return  mImageResourceId; }
+
+    /** Return whether or not there is an image for this word*/
+    public boolean hasImage() { return mImageResourceId != NO_IMAGE_PROVIDED; }
 }
