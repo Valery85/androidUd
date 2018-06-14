@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import java.util.ArrayList;
 
 public class RAdapter extends ArrayAdapter<Word> {
     private static final String LOG_TAG = RAdapter.class.getSimpleName();
+/** Resource Id for the background color for this list of words*/
+    private int mColorResourceId;
 
     /**
      * Custom constructor
@@ -32,10 +35,11 @@ public class RAdapter extends ArrayAdapter<Word> {
      * super class. It will be created in getView().
      *
      * @param wordsList List of Word objects to display in the list
-     */
-
-    public RAdapter(@NonNull Activity context, ArrayList<Word> wordsList) {
+     * @param colorResourceId is the resource ID for the background color for this list of words
+      */
+    public RAdapter(@NonNull Activity context, ArrayList<Word> wordsList, int colorResourceId) {
         super(context, 0, wordsList);
+        mColorResourceId = colorResourceId;
     }
 
     /**
@@ -82,7 +86,11 @@ public class RAdapter extends ArrayAdapter<Word> {
             /* GONE because ImageView doesn't have to take space on the screen*/
             wordImageView.setVisibility(View.GONE);
         }
-
+               // Set the theme color for the list item
+                        View textContainer = listItemView.findViewById(R.id.text_container);
+               // Find the color that the resource ID maps to
+        int color = ContextCompat.getColor(getContext(), mColorResourceId);
+        textContainer.setBackgroundColor(color);
         return listItemView;
     }
 }

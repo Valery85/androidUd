@@ -43,7 +43,7 @@ public class PhrasesActivity extends AppCompatActivity {
 
         RAdapter itemsAdapter = new RAdapter(this,
                 //   R.layout.list_item);
-                words);
+                words, R.color.category_phrases);
 
         ListView listView = (ListView) findViewById(R.id.list);
 
