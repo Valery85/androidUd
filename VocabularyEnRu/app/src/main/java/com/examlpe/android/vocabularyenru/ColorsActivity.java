@@ -38,6 +38,7 @@ public class ColorsActivity extends AppCompatActivity {
         words.add(new Word("белый", "white", R.drawable.color_white));
         words.add(new Word("грязно желтый", "dusty yellow", R.drawable.color_dusty_yellow));
         words.add(new Word("горчично желтый", "mustard yellow", R.drawable.color_mustard_yellow));
+        words.add(new Word("желтый", "yellow", R.drawable.color_mustard_yellow));
 
         RAdapter itemsAdapter = new RAdapter(ColorsActivity.this,
                 //   R.layout.list_item);
