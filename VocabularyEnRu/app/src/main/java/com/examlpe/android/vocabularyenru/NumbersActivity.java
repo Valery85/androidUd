@@ -15,6 +15,8 @@
  */
 package com.examlpe.android.vocabularyenru;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +29,7 @@ import java.util.ArrayList;
 public class NumbersActivity extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer;
+    private AudioManager mAudioManager;
 
     private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
@@ -36,28 +39,33 @@ public class NumbersActivity extends AppCompatActivity {
         }
     };
 
+    private AudioManager.OnAudioFocusChangeListener afChangeListener =
+            new AudioManager.OnAudioFocusChangeListener() {
+                @Override
+                public void onAudioFocusChange(int focusChange) {
+                    if (focusChange == AudioManager.AUDIOFOCUS_LOSS ||
+                            focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
+                        // Permanent loss of audio focus
+                        // Pause playback immediately
+                        mediaPlayer.pause();
+                        // go to start of the word
+                        mediaPlayer.seekTo(0);
+                    }
+                    else if(focusChange == AudioManager.AUDIOFOCUS_GAIN){
+                        mediaPlayer.start();
+                    }
+                    else if (focusChange == AudioManager.AUDIOFOCUS_LOSS){
+                        releaseMediaPlayer();
+                    }
+
+                }
+            };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
-/*        // Create array of words (numbers)
-        String [] words = new String [10];
-        words[0] = "one";
-        words[1] = "two";
-        words[2] = "three";
-        words[3] = "four";
-        words[4] = "five";
-        words[5] = "six";
-        words[6] = "seven";
-        words[7] = "eight";
-        words[8] = "nine";
-        words[9] = "ten";
-
-        for (int i=0; i<10; i++)
-        {
-            Log.v("NumberActivty", "Word at index " + i + ": " + words[i] );
-        }*/
 
        final ArrayList <Word> words = new ArrayList<Word>();
         words.add(new Word("один", "one", R.drawable.number_one, R.raw.number_one));
@@ -71,22 +79,9 @@ public class NumbersActivity extends AppCompatActivity {
         words.add(new Word("девять", "nine", R.drawable.number_nine, R.raw.number_nine));
         words.add(new Word("десять", "ten", R.drawable.number_ten, R.raw.number_ten));
 
+// create AudioManager for next managing audio focus
+        mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
 
-//    LinearLayout rootView = (LinearLayout) findViewById(R.id.root_view);
-
-//    int sizeWords = words.size();
-//    int count = 0;
-//    while (count < sizeWords){
-//        TextView wordView = new TextView(this);
-//        wordView.setText(words.get(count));
-//        rootView.addView(wordView);
-//        count++;
-//    }
-//        for (int count=0; count<words.size(); count++){
-//            TextView wordView = new TextView(NumbersActivity.this);
-//            wordView.setText(words.get(count));
-//            rootView.addView(wordView);
-//        }
 
         RAdapter itemsAdapter = new RAdapter(NumbersActivity.this,
              //   R.layout.list_item);
@@ -98,11 +93,20 @@ public class NumbersActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                // Request audio focus for playback
+                int result = mAudioManager.requestAudioFocus(afChangeListener,
+                        // Use the music stream.
+                        AudioManager.STREAM_MUSIC,
+                        // Request  focus.
+                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+                if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                    // Start playback
                 mediaPlayer = MediaPlayer.create(NumbersActivity.this, words.get(position).getmAudioResourceId());
                 mediaPlayer.start();
 
                 mediaPlayer.setOnCompletionListener(mCompletionListener);
-            }
+            }}
         });
     }
 
@@ -126,6 +130,10 @@ public class NumbersActivity extends AppCompatActivity {
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             mediaPlayer = null;
+
+            //Abandon audio focus, AudioFocusChangeListener will be unregistered
+            // no more callback from it will be sent.
+            mAudioManager.abandonAudioFocus(afChangeListener);
         }
     }
 }

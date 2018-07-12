@@ -15,6 +15,8 @@
  */
 package com.examlpe.android.vocabularyenru;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 
 public class PhrasesActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
+    private AudioManager mAudioManager;
 
     private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
@@ -35,12 +38,35 @@ public class PhrasesActivity extends AppCompatActivity {
         }
     };
 
+    private AudioManager.OnAudioFocusChangeListener afChangeListener =
+            new AudioManager.OnAudioFocusChangeListener() {
+                @Override
+                public void onAudioFocusChange(int focusChange) {
+                    if (focusChange == AudioManager.AUDIOFOCUS_LOSS ||
+                            focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
+                        // Permanent loss of audio focus
+                        // Pause playback immediately
+                        mediaPlayer.pause();
+                        // go to start of the word
+                        mediaPlayer.seekTo(0);
+                    }
+                    else if(focusChange == AudioManager.AUDIOFOCUS_GAIN){
+                        mediaPlayer.start();
+                    }
+                    else if (focusChange == AudioManager.AUDIOFOCUS_LOSS){
+                        releaseMediaPlayer();
+                    }
+
+                }
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
+        // create AudioManager for next managing audio focus
+        mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
 
         final ArrayList<Word> words = new ArrayList<Word>();
         words.add(new Word("Куда собираешься?", "Where are you going?", R.raw.phrase_where_are_you_going));
@@ -65,10 +91,17 @@ public class PhrasesActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                // Request audio focus for playback
+                int result = mAudioManager.requestAudioFocus(afChangeListener,
+                        // Use the music stream.
+                        AudioManager.STREAM_MUSIC,
+                        // Request  focus.
+                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+                if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
                 mediaPlayer = MediaPlayer.create(PhrasesActivity.this, words.get(position).getmAudioResourceId());
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(mCompletionListener);
-            }
+            }}
         });
     }
 
@@ -93,6 +126,10 @@ public class PhrasesActivity extends AppCompatActivity {
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             mediaPlayer = null;
+
+            //Abandon audio focus, AudioFocusChangeListener will be unregistered
+            // no more callback from it will be sent.
+            mAudioManager.abandonAudioFocus(afChangeListener);
         }
     }
 }
