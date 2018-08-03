@@ -13,19 +13,19 @@ public class Earthquake {
 
 private String mMagnitude;
 private String mLocation;
-private String mDate;
+private long mTimeInMilliseconds;
 
 /**
  * @param magnitude is a magnitude of earthquke
  * @param location shows where it happened
- * @param date shows when it happened
+ * @param timeInMilliseconds shows when it happened in ms (from 1970)
 * */
 
 
-public Earthquake(String magnitude, String location, String date){
+public Earthquake(String magnitude, String location, long timeInMilliseconds){
     this.mMagnitude = magnitude;
     this.mLocation = location;
-    this.mDate = date;
+    this.mTimeInMilliseconds = timeInMilliseconds;
 }
 
     public String getMagnitude() {
@@ -36,7 +36,7 @@ public Earthquake(String magnitude, String location, String date){
         return mLocation;
     }
 
-    public String getDate() {
-        return mDate;
+    public long getTimeInMilliseconds() {
+        return mTimeInMilliseconds;
     }
 }

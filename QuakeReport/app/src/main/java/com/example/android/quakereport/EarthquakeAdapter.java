@@ -39,7 +39,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         locationTV.setText( " " + currentEarthquake.getLocation());
 
         TextView dateTV = (TextView) listItemView.findViewById(R.id.date);
-        dateTV.setText( " " + currentEarthquake.getDate());
+        dateTV.setText( " " + currentEarthquake.getTimeInMilliseconds());
 
         return listItemView;
     }

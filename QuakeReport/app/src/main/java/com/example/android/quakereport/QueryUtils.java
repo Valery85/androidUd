@@ -69,7 +69,7 @@ public final class QueryUtils {
                String place = jsonObjectProperties.getString("place");
 
                // Get time
-               String time = jsonObjectProperties.getString("time");
+               long time = jsonObjectProperties.getLong("time");
 
              //Create earthquake oject with extracted from raw JSON data
              Earthquake earthquake = new Earthquake(magnitude, place, time);
