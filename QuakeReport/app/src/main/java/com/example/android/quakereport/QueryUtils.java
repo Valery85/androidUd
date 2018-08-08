@@ -63,7 +63,7 @@ public final class QueryUtils {
                 JSONObject jsonObjectProperties = jsonObjectFeature.getJSONObject("properties");
 
                 // Get magnitude
-               String magnitude = jsonObjectProperties.getString("mag");
+               double magnitude = jsonObjectProperties.getDouble("mag");
 
                // Get place
                String place = jsonObjectProperties.getString("place");
