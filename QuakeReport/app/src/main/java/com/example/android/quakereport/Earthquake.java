@@ -14,18 +14,22 @@ public class Earthquake {
 private double mMagnitude;
 private String mLocation;
 private long mTimeInMilliseconds;
+private String mUrl;
+
 
 /**
  * @param magnitude is a magnitude of earthquke
  * @param location shows where it happened
  * @param timeInMilliseconds shows when it happened in ms (from 1970)
+ * @param url contain url to website with details about the earthquake
 * */
 
 
-public Earthquake(double magnitude, String location, long timeInMilliseconds){
+public Earthquake(double magnitude, String location, long timeInMilliseconds, String url){
     this.mMagnitude = magnitude;
     this.mLocation = location;
     this.mTimeInMilliseconds = timeInMilliseconds;
+    this.mUrl = url;
 }
 
     public Double getMagnitude() {
@@ -39,4 +43,6 @@ public Earthquake(double magnitude, String location, long timeInMilliseconds){
     public long getTimeInMilliseconds() {
         return mTimeInMilliseconds;
     }
+
+    public String getUrl() {return mUrl;}
 }

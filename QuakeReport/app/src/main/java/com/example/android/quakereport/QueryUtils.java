@@ -88,8 +88,11 @@ public final class QueryUtils {
                // Get time
                long time = jsonObjectProperties.getLong("time");
 
+               // Get value of url
+                String url = jsonObjectProperties.getString("url");
+
              //Create earthquake oject with extracted from raw JSON data
-             Earthquake earthquake = new Earthquake(magnitude, place, time);
+             Earthquake earthquake = new Earthquake(magnitude, place, time, url);
 
              // add created earthquake oject in ArrayList
              earthquakes.add(earthquake);
